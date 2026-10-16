@@ -11,6 +11,10 @@ her ses Tone.js ile sentezleniyor.
 > Gündüzleri avukat, geceleri oyun tutkunu Nolan yağmurlu bir gecede yaya geçidinde
 > farların içinde kaybolur… ve Elonth dünyasında Joseph olarak yeniden doğar.
 
+> **Tek seferlik Pages ayarı:** Oynatıcı her push'ta `gh-pages` dalına yayımlanır. Depoda Pages kapalıysa
+> (workflow token'ı Pages'i açamaz) bir kez **Settings → Pages → Build and deployment → Source: "Deploy from a branch"
+> → Branch: `gh-pages` / `(root)` → Save** yapın; birkaç dakika içinde yukarıdaki bağlantı açılır.
+
 ## Hızlı başlangıç
 
 ```bash
