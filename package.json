@@ -1,0 +1,24 @@
+{
+  "name": "reborn-in-elonth",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "frames": "node scripts/keyframes.mjs",
+    "export": "node scripts/export.mjs"
+  },
+  "dependencies": {
+    "@fontsource/cinzel": "^5.3.0",
+    "@fontsource/noto-sans": "^5.3.0",
+    "gsap": "^3.13.0",
+    "tone": "^15.1.22"
+  },
+  "devDependencies": {
+    "playwright": "^1.56.1",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5"
+  }
+}

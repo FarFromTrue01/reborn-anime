@@ -1,0 +1,56 @@
+name: Export MP4 and publish release
+
+on:
+  push:
+    tags: ['v*']
+    branches: [main, 'claude/**']
+    paths:
+      - 'src/**'
+      - 'scripts/**'
+      - 'index.html'
+      - 'package*.json'
+      - '.github/workflows/release.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: export-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Install ffmpeg and Chromium
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          npx playwright install --with-deps chromium
+      - name: Render frames + soundtrack and mux the MP4
+        run: npm run export
+      - uses: actions/upload-artifact@v4
+        with:
+          name: reborn-prolog
+          path: export/reborn-prolog.mp4
+      - name: Publish GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || format('prolog-r{0}', github.run_number) }}
+          name: Reborn in Elonth — Prolog (r${{ github.run_number }})
+          target_commitish: ${{ github.sha }}
+          make_latest: true
+          files: export/reborn-prolog.mp4
+          body: |
+            60 saniyelik, tamamen kodla çizilmiş ve canlandırılmış anime kısa film (1080p30, sesli).
+            Kare kare Playwright ile render edildi, müzik Tone.Offline ile üretildi, ffmpeg ile birleştirildi.
+
+            Commit: ${{ github.sha }}

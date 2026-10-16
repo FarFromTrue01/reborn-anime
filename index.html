@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
+  <title>Reborn in Elonth — Prolog</title>
+  <meta name="description" content="Tamamen kodla çizilmiş 60 saniyelik özgün anime kısa film." />
+</head>
+<body>
+  <div id="stage">
+    <canvas id="screen" width="1920" height="1080" aria-label="Film"></canvas>
+    <div id="tap" role="button" tabindex="0">
+      <div class="tap-inner">
+        <div class="tap-kicker">Kısa Film · Prolog</div>
+        <h1>REBORN <span>in</span> ELONTH</h1>
+        <div class="tap-cta" id="tapCta">İzlemek için dokun</div>
+        <div class="tap-status" id="tapStatus">Müzik hazırlanıyor…</div>
+        <div class="tap-rotate">Daha iyi bir deneyim için telefonunuzu yatay çevirin ↻</div>
+      </div>
+    </div>
+    <div id="controls" class="hidden">
+      <button id="btnPlay" aria-label="Oynat/Duraklat"></button>
+      <span id="time">0:00 / 1:00</span>
+      <input id="seek" type="range" min="0" max="60" step="0.01" value="0" aria-label="Zaman çubuğu" />
+      <button id="btnMute" aria-label="Ses aç/kapat"></button>
+      <button id="btnCC" aria-label="Altyazı aç/kapat" class="on">CC</button>
+      <button id="btnFS" aria-label="Tam ekran"></button>
+    </div>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
